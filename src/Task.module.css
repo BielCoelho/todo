@@ -31,6 +31,7 @@
     position: absolute;
     top: 50%;
     left: 18%;
+    pointer-events: none;
 }
 
 .checkbox {

@@ -1,16 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTaskState } from "./App";
 import styles from "./Task.module.css";
 
 export function Task({ content, taskToDelete }) {
-  const [fulfilled, setFulfilled] = useState(false);
+  // const [fulfilled, setFulfilled] = useState(false);
+  const { setTasks, tasks } = useTaskState();
+  const fulfilled = tasks[content.id -1].isCompleted
+  console.log(fulfilled)
 
-  const { setTasks } = useTaskState();
+
+  // if (content.isCompleted) {
+  //   setFulfilled(true)
+  // }
+
 
   function handleTaskDone(checked) {
     content.isCompleted = checked.target.checked;
 
-    setFulfilled(checked.target.checked);
+    // setFulfilled(checked.target.checked);
 
     setTasks((prevState) => {
       return prevState.map((item) => {
@@ -26,6 +33,10 @@ export function Task({ content, taskToDelete }) {
     });
   }
 
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [fulfilled])
+
   return (
     <div className={styles.task}>
       <div className={styles.checkboxContainer}>
@@ -34,20 +45,21 @@ export function Task({ content, taskToDelete }) {
           onClick={handleTaskDone}
           type="checkbox"
         />
-        {fulfilled ? (<svg
-          className={styles.checkmark}
-          width="10"
-          height="7"
-          viewBox="0 0 10 7"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M8.43059 0.342123L4.09865 4.67406L1.61618 2.19159L0.780273 3.0275L4.09865 6.34587L9.26649 1.17803L8.43059 0.342123Z"
-            fill="#F2F2F2"
-          />
-        </svg>
-      ) : null}
+        {fulfilled ? (
+          <svg
+            className={styles.checkmark}
+            width="10"
+            height="7"
+            viewBox="0 0 10 7"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.43059 0.342123L4.09865 4.67406L1.61618 2.19159L0.780273 3.0275L4.09865 6.34587L9.26649 1.17803L8.43059 0.342123Z"
+              fill="#F2F2F2"
+            />
+          </svg>
+        ) : null}
       </div>
       <p className={fulfilled ? styles.fulfilled : null}>{content.text}</p>
       <svg
