@@ -1,12 +1,33 @@
-import { createContext, useState } from "react";
+import { useState } from "react";
+import { useTaskState } from "./App";
 import styles from "./Task.module.css";
+
 
 export function Task({ content, taskToDelete }) {
   const [fulfilled, setFulfilled] = useState(false)
 
+  const { setTasks } = useTaskState()
+
   function handleTaskDone(checked) {
+    content.isCompleted = checked.target.checked
+
     setFulfilled(checked.target.checked);
+
+    setTasks((prevState) => { 
+      return prevState.map(item => {
+        if (item.id === content.id) {
+          return {
+            ...item,
+            isCompleted: checked.target.checked
+          }
+        } else {
+          return item
+        }
+      })
+    })
   }
+
+
 
   return (
     <div className={styles.task}>

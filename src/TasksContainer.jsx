@@ -5,6 +5,9 @@ import styles from "./TasksContainer.module.css";
 export function TasksContainer({tasks, removeTask}) {
   const empty = tasks == 0;
   const allTasksQuantity = tasks.length
+  const fullfiledTasks = tasks.filter(item => item.isCompleted)
+  
+  console.log(fullfiledTasks)
 
   return (
     <article>
@@ -13,7 +16,7 @@ export function TasksContainer({tasks, removeTask}) {
           Tarefas criadas <span>{allTasksQuantity}</span>
         </div>
         <div className={styles.finishedTasks}>
-          Concluídas <span>{empty ? '0' : `QUANTIDADE CONCLUIDA de ${allTasksQuantity}`}</span>
+          Concluídas <span>{empty ? '0' : `${fullfiledTasks.length} de ${allTasksQuantity}`}</span>
         </div>
       </header>
       <div className={styles.tasksContainer}>
