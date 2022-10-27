@@ -29,13 +29,13 @@ function App() {
     setTasks(tasksWithoutRemoved);
   }
 
-  useEffect(() => {
-    if (!localStorage) {
-      return
-    }
-    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
-    setTasks(storedTasks);
-  }, []);
+  // useEffect(() => {
+  //   if (!localStorage) {
+  //     return
+  //   }
+  //   const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+  //   setTasks(storedTasks);
+  // }, []);
 
   const tasksCount = tasks.length > 0 ? tasks.at(-1).id : tasks.length
 

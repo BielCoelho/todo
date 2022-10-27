@@ -21,7 +21,16 @@
 
 .trash:hover {
     fill: var(--danger);
-    /* background-color: white; */
+}
+
+.checkboxContainer {
+    position: relative
+}
+
+.checkmark {
+    position: absolute;
+    top: 50%;
+    left: 18%;
 }
 
 .checkbox {
@@ -41,6 +50,7 @@
     border-color: var(--purple);
     background-color: var(--purple);
 }
+
 
 .fulfilled {
     text-decoration: line-through;
