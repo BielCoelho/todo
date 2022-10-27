@@ -3,21 +3,15 @@ import { useTaskState } from "./App";
 import styles from "./Task.module.css";
 
 export function Task({ content, taskToDelete }) {
-  // const [fulfilled, setFulfilled] = useState(false);
   const { setTasks, tasks } = useTaskState();
-  const fulfilled = tasks[content.id -1].isCompleted
-  console.log(fulfilled)
-
-
-  // if (content.isCompleted) {
-  //   setFulfilled(true)
-  // }
-
+  const [fulfilled, setFullfilled] = useState(content.isCompleted);
 
   function handleTaskDone(checked) {
-    content.isCompleted = checked.target.checked;
+    setFullfilled(checked.target.checked);
 
-    // setFulfilled(checked.target.checked);
+    console.log(fulfilled);
+    console.log(content.isCompleted);
+    console.log(checked.target.checked);
 
     setTasks((prevState) => {
       return prevState.map((item) => {
@@ -35,7 +29,7 @@ export function Task({ content, taskToDelete }) {
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [fulfilled])
+  }, [fulfilled]);
 
   return (
     <div className={styles.task}>
