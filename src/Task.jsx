@@ -37,6 +37,7 @@ export function Task({ content, taskToDelete }) {
         <input
           className={styles.checkbox}
           onClick={handleTaskDone}
+          checked={fulfilled}
           type="checkbox"
         />
         {fulfilled ? (
