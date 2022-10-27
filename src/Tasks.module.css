@@ -45,6 +45,7 @@
     font-weight: bold;
     color: var(--gray-300);
     text-align: center;
+    cursor: default;
 }
 .empty span {
     font-weight: normal;
