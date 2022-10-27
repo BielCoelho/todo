@@ -1,7 +1,7 @@
 import plus from './assets/plus.svg';
 import styles from './Input.module.css';
 
-export function Input() {
+export function AddTaskBar() {
     return (
         <form className={styles.form}>
             <input className={styles.input} placeholder="Adicione uma nova tarefa" type="text" />

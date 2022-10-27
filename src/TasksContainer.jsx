@@ -1,8 +1,9 @@
 import Clipboard from "./assets/clipboard.svg";
-import styles from "./Tasks.module.css";
+import { Task } from "./Task";
+import styles from "./TasksContainer.module.css";
 
-export function Tasks() {
-  const empty = true;
+export function TasksContainer() {
+  const empty = false;
 
   return (
     <article>
@@ -24,7 +25,14 @@ export function Tasks() {
             </p>
           </div>
         ) : (
-          <h1>cheio</h1>
+          <>
+          <Task />
+          <Task />
+          <Task />
+          <Task />
+          <Task />
+          <Task />
+          </>
         )}
       </div>
     </article>

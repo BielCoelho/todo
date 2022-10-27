@@ -1,0 +1,43 @@
+.task {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 1rem;
+    align-items: flex-start;
+    background-color: var(--gray-400);
+    border-radius: 8px;
+}
+
+.trash,
+.checkbox {
+    margin-top: 0.3rem;
+}
+
+.trash {
+    fill: var(--gray-300);
+    cursor: pointer;
+    transition: fill 0.2s;
+}
+
+.trash:hover {
+    fill: var(--danger);
+    /* background-color: white; */
+}
+
+.checkbox {
+    width: 2.5rem;
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid var(--blue);
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    transition: background 150ms, border 150ms;
+}
+
+.checkbox:checked {
+    border-color: var(--purple);
+    background-color: var(--purple);
+}

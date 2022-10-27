@@ -1,8 +1,8 @@
+import { AddTaskBar } from './AddTaskBar';
 import styles from './App.module.css';
-import './global.css';
-import { Input } from './Input';
-import { Tasks } from './tasks';
 import Rocket from './assets/rocket.svg';
+import './global.css';
+import { TasksContainer } from './TasksContainer';
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
       <p>to<span>do</span></p>
     </header>
     <main className={styles.mainContainer}>
-      <Input />
-      <Tasks />
+      <AddTaskBar />
+      <TasksContainer />
     </main>
     </>
   )
