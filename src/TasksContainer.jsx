@@ -29,7 +29,7 @@ export function TasksContainer({tasks, removeTask}) {
           <>
           {
             tasks.map(task => {
-              return <Task key={task.id} content={task.text} taskToDelete={removeTask} />
+              return <Task key={task.id} content={task} taskToDelete={removeTask} />
             })
           }
           </>

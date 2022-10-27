@@ -18,7 +18,8 @@ export function AddTaskBar({addTask, tasksCount}) {
         
         addTask({
             text: newTask,
-            id: tasksCount +1
+            id: tasksCount +1,
+            isCompleted: false
         });
         setNewTask("")
     }

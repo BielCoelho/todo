@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import styles from "./Task.module.css";
 
 export function Task({ content, taskToDelete }) {
@@ -15,7 +15,7 @@ export function Task({ content, taskToDelete }) {
         onClick={handleTaskDone}
         type="checkbox"
       />
-      <p className={fulfilled ? styles.fulfilled : null }>{content}</p>
+      <p className={fulfilled ? styles.fulfilled : null }>{content.text}</p>
       <svg
         onClick={() => taskToDelete(content)}
         width="13"

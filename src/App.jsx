@@ -10,11 +10,13 @@ function App() {
 
   function addTask(task) {
     setTasks([...tasks, task]);
+    console.log(tasks)
   }
 
   function removeTask(task) {
+    console.log(task)
     const tasksWithoutRemoved = tasks.filter(item => {
-      return item.text !== task;
+      return item.text !== task.text;
     })
     setTasks(tasksWithoutRemoved)
   }
@@ -29,7 +31,7 @@ function App() {
         </p>
       </header>
       <main className={styles.mainContainer}>
-        <AddTaskBar addTask={addTask} tasksCount={tasks.length} />
+        <AddTaskBar addTask={addTask} tasksCount={tasks.length > 0 ? tasks.at(-1).id : tasks.length} />
         <TasksContainer tasks={tasks} removeTask={removeTask}/>
       </main>
     </>
