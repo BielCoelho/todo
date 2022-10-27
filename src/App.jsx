@@ -17,10 +17,9 @@ function App() {
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
     if (localStorage.getItem("tasks") !== null) {
-        setTasks(JSON.parse(localStorage.getItem("tasks")))
+      setTasks(JSON.parse(localStorage.getItem("tasks")));
     }
-  },[])
-
+  }, []);
 
   function addTask(task) {
     setTasks((prevState) => [...prevState, task]);
@@ -32,17 +31,10 @@ function App() {
       return item.text !== task.text;
     });
     setTasks(tasksWithoutRemoved);
+    localStorage.setItem("tasks", JSON.stringify(tasksWithoutRemoved));
   }
 
-  // useEffect(() => {
-  //   if (!localStorage) {
-  //     return
-  //   }
-  //   const storedTasks = JSON.parse(localStorage.getItem("tasks"));
-  //   setTasks(storedTasks);
-  // }, []);
-
-  const tasksCount = tasks.length > 0 ? tasks.at(-1).id : tasks.length
+  const tasksCount = tasks.length > 0 ? tasks.at(-1).id : tasks.length;
 
   return (
     <TaskState.Provider
@@ -58,10 +50,7 @@ function App() {
         </p>
       </header>
       <main className={styles.mainContainer}>
-        <AddTaskBar
-          addTask={addTask}
-          tasksCount={tasksCount}
-        />
+        <AddTaskBar addTask={addTask} tasksCount={tasksCount} />
         <TasksContainer tasks={tasks} removeTask={removeTask} />
       </main>
     </TaskState.Provider>
