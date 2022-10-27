@@ -2,32 +2,29 @@ import { useState } from "react";
 import { useTaskState } from "./App";
 import styles from "./Task.module.css";
 
-
 export function Task({ content, taskToDelete }) {
-  const [fulfilled, setFulfilled] = useState(false)
+  const [fulfilled, setFulfilled] = useState(false);
 
-  const { setTasks } = useTaskState()
+  const { setTasks } = useTaskState();
 
   function handleTaskDone(checked) {
-    content.isCompleted = checked.target.checked
+    content.isCompleted = checked.target.checked;
 
     setFulfilled(checked.target.checked);
 
-    setTasks((prevState) => { 
-      return prevState.map(item => {
+    setTasks((prevState) => {
+      return prevState.map((item) => {
         if (item.id === content.id) {
           return {
             ...item,
-            isCompleted: checked.target.checked
-          }
+            isCompleted: checked.target.checked,
+          };
         } else {
-          return item
+          return item;
         }
-      })
-    })
+      });
+    });
   }
-
-
 
   return (
     <div className={styles.task}>
@@ -36,7 +33,7 @@ export function Task({ content, taskToDelete }) {
         onClick={handleTaskDone}
         type="checkbox"
       />
-      <p className={fulfilled ? styles.fulfilled : null }>{content.text}</p>
+      <p className={fulfilled ? styles.fulfilled : null}>{content.text}</p>
       <svg
         onClick={() => taskToDelete(content)}
         width="13"

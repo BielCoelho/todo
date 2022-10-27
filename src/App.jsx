@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { AddTaskBar } from "./AddTaskBar";
 import styles from "./App.module.css";
 import Rocket from "./assets/rocket.svg";
@@ -19,17 +19,20 @@ function App() {
   function addTask(task) {
     // setTasks([...tasks, task]);
     setTasks((prevState) => [...prevState, task]);
+    localStorage.setItem("tasks", JSON.stringify([...tasks, task]));
   }
 
-  console.log(tasks);
-
   function removeTask(task) {
-    console.log(task);
     const tasksWithoutRemoved = tasks.filter((item) => {
       return item.text !== task.text;
     });
     setTasks(tasksWithoutRemoved);
   }
+
+  useEffect(() => {
+    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+    setTasks(storedTasks);
+  }, []);
 
   return (
     <TaskState.Provider
@@ -38,19 +41,19 @@ function App() {
         setTasks,
       }}
     >
-        <header className={styles.header}>
-          <img src={Rocket} />
-          <p>
-            to<span>do</span>
-          </p>
-        </header>
-        <main className={styles.mainContainer}>
-          <AddTaskBar
-            addTask={addTask}
-            tasksCount={tasks.length > 0 ? tasks.at(-1).id : tasks.length}
-          />
-          <TasksContainer tasks={tasks} removeTask={removeTask} />
-        </main>
+      <header className={styles.header}>
+        <img src={Rocket} />
+        <p>
+          to<span>do</span>
+        </p>
+      </header>
+      <main className={styles.mainContainer}>
+        <AddTaskBar
+          addTask={addTask}
+          tasksCount={tasks.length > 0 ? tasks.at(-1).id : tasks.length}
+        />
+        <TasksContainer tasks={tasks} removeTask={removeTask} />
+      </main>
     </TaskState.Provider>
   );
 }

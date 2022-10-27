@@ -2,12 +2,10 @@ import Clipboard from "./assets/clipboard.svg";
 import { Task } from "./Task";
 import styles from "./TasksContainer.module.css";
 
-export function TasksContainer({tasks, removeTask}) {
+export function TasksContainer({ tasks, removeTask }) {
   const empty = tasks == 0;
-  const allTasksQuantity = tasks.length
-  const fullfiledTasks = tasks.filter(item => item.isCompleted)
-  
-  console.log(fullfiledTasks)
+  const allTasksQuantity = tasks.length;
+  const fullfiledTasks = tasks.filter((item) => item.isCompleted);
 
   return (
     <article>
@@ -16,7 +14,10 @@ export function TasksContainer({tasks, removeTask}) {
           Tarefas criadas <span>{allTasksQuantity}</span>
         </div>
         <div className={styles.finishedTasks}>
-          Concluídas <span>{empty ? '0' : `${fullfiledTasks.length} de ${allTasksQuantity}`}</span>
+          Concluídas{" "}
+          <span>
+            {empty ? "0" : `${fullfiledTasks.length} de ${allTasksQuantity}`}
+          </span>
         </div>
       </header>
       <div className={styles.tasksContainer}>
@@ -30,11 +31,11 @@ export function TasksContainer({tasks, removeTask}) {
           </div>
         ) : (
           <>
-          {
-            tasks.map(task => {
-              return <Task key={task.id} content={task} taskToDelete={removeTask} />
-            })
-          }
+            {tasks.map((task) => {
+              return (
+                <Task key={task.id} content={task} taskToDelete={removeTask} />
+              );
+            })}
           </>
         )}
       </div>
