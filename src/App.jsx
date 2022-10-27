@@ -34,6 +34,8 @@ function App() {
     setTasks(storedTasks);
   }, []);
 
+  const tasksCount = tasks.length > 0 ? tasks.at(-1).id : tasks.length
+
   return (
     <TaskState.Provider
       value={{
@@ -50,7 +52,7 @@ function App() {
       <main className={styles.mainContainer}>
         <AddTaskBar
           addTask={addTask}
-          tasksCount={tasks.length > 0 ? tasks.at(-1).id : tasks.length}
+          tasksCount={tasksCount}
         />
         <TasksContainer tasks={tasks} removeTask={removeTask} />
       </main>

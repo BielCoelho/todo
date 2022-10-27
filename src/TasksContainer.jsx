@@ -5,7 +5,7 @@ import styles from "./TasksContainer.module.css";
 export function TasksContainer({ tasks, removeTask }) {
   const empty = tasks == 0;
   const allTasksQuantity = tasks.length;
-  const fullfiledTasks = tasks.filter((item) => item.isCompleted) || '0';
+  const fullfiledTasks = tasks.filter((item) => item.isCompleted);
 
   return (
     <article>
