@@ -2,17 +2,18 @@ import Clipboard from "./assets/clipboard.svg";
 import { Task } from "./Task";
 import styles from "./TasksContainer.module.css";
 
-export function TasksContainer() {
-  const empty = false;
+export function TasksContainer({tasks, removeTask}) {
+  const empty = tasks == 0;
+  const allTasksQuantity = tasks.length
 
   return (
     <article>
       <header className={styles.header}>
         <div className={styles.createdTasks}>
-          Tarefas criadas <span>0</span>
+          Tarefas criadas <span>{allTasksQuantity}</span>
         </div>
         <div className={styles.finishedTasks}>
-          Concluídas <span>0</span>
+          Concluídas <span>{empty ? '0' : `QUANTIDADE CONCLUIDA de ${allTasksQuantity}`}</span>
         </div>
       </header>
       <div className={styles.tasksContainer}>
@@ -26,12 +27,11 @@ export function TasksContainer() {
           </div>
         ) : (
           <>
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
+          {
+            tasks.map(task => {
+              return <Task key={task.id} content={task.text} taskToDelete={removeTask} />
+            })
+          }
           </>
         )}
       </div>

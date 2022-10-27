@@ -1,6 +1,6 @@
 .task {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 18px 1fr 13px;
     padding: 1rem;
     gap: 1rem;
     align-items: flex-start;
@@ -10,7 +10,7 @@
 
 .trash,
 .checkbox {
-    margin-top: 0.3rem;
+    margin-top: 0.2rem;
 }
 
 .trash {
@@ -25,7 +25,7 @@
 }
 
 .checkbox {
-    width: 2.5rem;
+    width: 1rem;
     aspect-ratio: 1/1;
     background-color: transparent;
     border-radius: 50%;
@@ -40,4 +40,9 @@
 .checkbox:checked {
     border-color: var(--purple);
     background-color: var(--purple);
+}
+
+.fulfilled {
+    text-decoration: line-through;
+    color: var(--gray-300)
 }
