@@ -15,9 +15,14 @@ export const useTaskState = () => useContext(TaskState);
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  useEffect(() => {
+    if (localStorage.getItem("tasks") !== null) {
+        setTasks(JSON.parse(localStorage.getItem("tasks")))
+    }
+  },[])
+
 
   function addTask(task) {
-    // setTasks([...tasks, task]);
     setTasks((prevState) => [...prevState, task]);
     localStorage.setItem("tasks", JSON.stringify([...tasks, task]));
   }

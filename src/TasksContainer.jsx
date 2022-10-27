@@ -5,7 +5,13 @@ import styles from "./TasksContainer.module.css";
 export function TasksContainer({ tasks, removeTask }) {
   const empty = tasks == 0;
   const allTasksQuantity = tasks.length;
-  const fullfiledTasks = tasks.filter((item) => item.isCompleted);
+  const fullfiledTasks = () => {
+    if (tasks !== null) {
+     return tasks.filter((item) => item.isCompleted)
+    } else {
+      return
+    }
+  };
 
   return (
     <article>
