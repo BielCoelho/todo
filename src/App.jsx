@@ -29,10 +29,10 @@ function App() {
     setTasks(tasksWithoutRemoved);
   }
 
-  useEffect(() => {
-    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
-    setTasks(storedTasks);
-  }, []);
+  // useEffect(() => {
+  //   const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+  //   setTasks(storedTasks);
+  // }, []);
 
   const tasksCount = tasks.length > 0 ? tasks.at(-1).id : tasks.length
 
