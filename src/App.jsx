@@ -51,7 +51,7 @@ function App() {
       </header>
       <main className={styles.mainContainer}>
         <AddTaskBar addTask={addTask} tasksCount={tasksCount} />
-        <TasksContainer tasks={tasks} removeTask={removeTask} />
+        <TasksContainer removeTask={removeTask} />
       </main>
     </TaskState.Provider>
   );

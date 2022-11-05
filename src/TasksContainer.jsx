@@ -1,17 +1,22 @@
+import { useTaskState } from "./App";
 import Clipboard from "./assets/clipboard.svg";
 import { Task } from "./Task";
 import styles from "./TasksContainer.module.css";
 
-export function TasksContainer({ tasks, removeTask }) {
+export function TasksContainer({ removeTask }) {
+  const { tasks } = useTaskState();
   const empty = tasks == 0;
   const allTasksQuantity = tasks.length;
-  const fullfiledTasks = () => {
-    if (tasks !== null) {
-     return tasks.filter((item) => item.isCompleted)
+
+  const fullfiledTasks = tasks.filter((task) => {
+    if (task.isCompleted) {
+      return task;
     } else {
       return
     }
-  };
+  });
+
+  // const fullfiledTasks = [1, 2, 4 ,5]
 
   return (
     <article>
